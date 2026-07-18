@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mahbuba, With Love</title>
+
+<!-- Premium typography: Playfair Display for elegant display headlines, Quicksand for warm playful body text -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= AMBIENT BACKGROUND ================= -->
+<!-- Populated by JS with floating hearts, petals, sparkles, ribbons -->
+<div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
+
+<!-- Mouse glow that follows the cursor -->
+<div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+
+<!-- ================= FLOATING NAV ================= -->
+<nav class="floating-nav" id="floatingNav" aria-label="Journey navigation">
+  <button class="nav-orb" data-target="home" title="Home"><span>🏠</span></button>
+  <button class="nav-orb" data-target="marriage" title="Marriage"><span>❤️</span></button>
+  <button class="nav-orb" data-target="kiss" title="Kiss"><span>💋</span></button>
+  <button class="nav-orb" data-target="hug" title="Hug"><span>🤗</span></button>
+</nav>
+
+<main id="app">
+
+  <!-- ================= WELCOME SCREEN ================= -->
+  <section class="page active" id="page-welcome">
+    <div class="glass-card welcome-card">
+      <p class="eyebrow">a little something, just for you</p>
+      <h1 class="display-heading">Hello Mahbuba Sultana Mahi <span class="heartbeat">❤️</span></h1>
+      <p class="welcome-sub">This little website was made especially for you.</p>
+      <button class="btn btn-primary btn-hero" id="startJourneyBtn">
+        <span>Start Our Love Journey</span>
+        <span class="btn-shine"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= HOME HUB ================= -->
+  <section class="page" id="page-home">
+    <div class="glass-card home-card">
+      <p class="eyebrow">our little world</p>
+      <h2 class="display-heading small">Where should we go?</h2>
+      <div class="hub-grid">
+        <button class="hub-tile" data-target="marriage">
+          <span class="hub-emoji">❤️</span>
+          <span class="hub-label">Marriage</span>
+        </button>
+        <button class="hub-tile" data-target="kiss">
+          <span class="hub-emoji">💋</span>
+          <span class="hub-label">Kiss</span>
+        </button>
+        <button class="hub-tile" data-target="hug">
+          <span class="hub-emoji">🤗</span>
+          <span class="hub-label">Hug</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARRIAGE FLOW ================= -->
+  <section class="page" id="page-marriage">
+
+    <!-- Step 1: The question -->
+    <div class="glass-card question-card flow-step" data-step="marriage-1">
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading">Will you marry me? <span>💍</span></h2>
+      <div class="answer-row">
+        <button class="btn btn-primary btn-yes" data-flow="marriage" data-answer="yes">❤️ Yes</button>
+        <button class="btn btn-ghost btn-no" data-flow="marriage" data-answer="no">🙈 No</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Wedding date -->
+    <div class="glass-card question-card flow-step" data-step="marriage-2" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">When would you like to get married? <span>💍</span></h2>
+      <div class="calendar-mount" data-calendar-for="marriage-date"></div>
+      <button class="btn btn-primary btn-continue" data-next="marriage-3" disabled>Continue</button>
+    </div>
+
+    <!-- Step 3: Dress color -->
+    <div class="glass-card question-card flow-step" data-step="marriage-3" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">What color wedding dress would you love to wear?</h2>
+      <div class="choice-grid" data-choice-group="dress">
+        <button class="choice-chip" data-value="White" style="--swatch:#ffffff">White</button>
+        <button class="choice-chip" data-value="Ivory" style="--swatch:#f4ecd8">Ivory</button>
+        <button class="choice-chip" data-value="Pink" style="--swatch:#f2a6c6">Pink</button>
+        <button class="choice-chip" data-value="Red" style="--swatch:#c8384f">Red</button>
+        <button class="choice-chip choice-chip--custom" data-value="custom">🎨 Custom Color</button>
+      </div>
+      <div class="custom-color-row" id="dressCustomRow" hidden>
+        <input type="color" id="dressCustomColor" value="#f2a6c6">
+        <span>Pick your dream shade</span>
+      </div>
+      <button class="btn btn-primary btn-continue" data-next="marriage-4" disabled>Continue</button>
+    </div>
+
+    <!-- Step 4: Groom outfit -->
+    <div class="glass-card question-card flow-step" data-step="marriage-4" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">What would you like Habibul Bashar to wear?</h2>
+      <div class="choice-grid" data-choice-group="groom">
+        <button class="choice-chip" data-value="Classic Black Suit">Classic Black Suit</button>
+        <button class="choice-chip" data-value="White Sherwani">White Sherwani</button>
+        <button class="choice-chip" data-value="Royal Blue Sherwani">Royal Blue Sherwani</button>
+        <button class="choice-chip" data-value="Golden Sherwani">Golden Sherwani</button>
+        <button class="choice-chip" data-value="Traditional Panjabi">Traditional Panjabi</button>
+        <button class="choice-chip choice-chip--custom" data-value="custom">✏️ Custom Outfit</button>
+      </div>
+      <div class="custom-color-row" id="groomCustomRow" hidden>
+        <input type="text" id="groomCustomText" placeholder="Describe the outfit...">
+      </div>
+      <button class="btn btn-primary btn-continue" data-next="marriage-5" disabled>Reveal Our Wedding Card</button>
+    </div>
+
+    <!-- Step 5: Wedding card -->
+    <div class="glass-card wedding-card-wrap flow-step" data-step="marriage-5" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">Our Wedding Invitation</h2>
+
+      <div class="wedding-card" id="weddingCard">
+        <div class="wedding-card-border">
+          <p class="wc-eyebrow">Together with our families</p>
+          <p class="wc-names"><span id="wcGroom">Habibul Bashar</span><span class="wc-amp">&amp;</span><span id="wcBride">Mahbuba Sultana Mahi</span></p>
+          <p class="wc-request">request the pleasure of your company</p>
+          <div class="wc-divider">✦ ❦ ✦</div>
+          <div class="wc-details">
+            <div class="wc-detail"><span class="wc-detail-label">Wedding Date</span><span class="wc-detail-value" id="wcDate">—</span></div>
+            <div class="wc-detail"><span class="wc-detail-label">Bride's Dress</span><span class="wc-detail-value" id="wcDress">—</span></div>
+            <div class="wc-detail"><span class="wc-detail-label">Groom's Outfit</span><span class="wc-detail-value" id="wcGroomOutfit">—</span></div>
+          </div>
+          <div class="wc-divider">✦</div>
+          <p class="wc-footer">With all our love</p>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <button class="btn btn-primary" id="downloadCardBtn">⬇ Download PNG</button>
+        <button class="btn btn-ghost" id="shareCardBtn">Share</button>
+        <button class="btn btn-ghost" id="redoMarriageBtn">↻ Start Over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KISS FLOW ================= -->
+  <section class="page" id="page-kiss">
+
+    <div class="glass-card question-card flow-step" data-step="kiss-1">
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading">Will you give me a kiss? <span>💋</span></h2>
+      <div class="answer-row">
+        <button class="btn btn-primary btn-yes" data-flow="kiss" data-answer="yes">Yes</button>
+        <button class="btn btn-ghost btn-no" data-flow="kiss" data-answer="no">No</button>
+      </div>
+    </div>
+
+    <div class="glass-card question-card flow-step" data-step="kiss-2" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">How would you like to kiss me?</h2>
+      <div class="choice-grid" data-choice-group="kissStyle">
+        <button class="choice-chip" data-value="On the Lips">💋 On the Lips</button>
+        <button class="choice-chip" data-value="On the Cheek">😊 On the Cheek</button>
+        <button class="choice-chip" data-value="On the Forehead">😘 On the Forehead</button>
+        <button class="choice-chip" data-value="A Surprise Kiss">❤️ A Surprise Kiss</button>
+      </div>
+      <button class="btn btn-primary btn-continue" data-next="kiss-3" disabled>Continue</button>
+    </div>
+
+    <div class="glass-card question-card flow-step" data-step="kiss-3" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">When?</h2>
+      <div class="calendar-mount" data-calendar-for="kiss-date"></div>
+      <button class="btn btn-primary btn-continue" data-next="kiss-4" disabled>Confirm</button>
+    </div>
+
+    <div class="glass-card success-card flow-step" data-step="kiss-4" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <div class="success-icon">💋</div>
+      <h2 class="display-heading small">Sealed with a kiss</h2>
+      <div class="success-details">
+        <div class="wc-detail"><span class="wc-detail-label">Kiss Style</span><span class="wc-detail-value" id="kissStyleOut">—</span></div>
+        <div class="wc-detail"><span class="wc-detail-label">Kiss Date</span><span class="wc-detail-value" id="kissDateOut">—</span></div>
+      </div>
+      <button class="btn btn-ghost" id="redoKissBtn">↻ Do It Again</button>
+    </div>
+  </section>
+
+  <!-- ================= HUG FLOW ================= -->
+  <section class="page" id="page-hug">
+
+    <div class="glass-card question-card flow-step" data-step="hug-1">
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading">Will you give me a hug? <span>🤗</span></h2>
+      <div class="answer-row">
+        <button class="btn btn-primary btn-yes" data-flow="hug" data-answer="yes">Yes</button>
+        <button class="btn btn-ghost btn-no" data-flow="hug" data-answer="no">No</button>
+      </div>
+    </div>
+
+    <div class="glass-card question-card flow-step" data-step="hug-2" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">How would you hug me?</h2>
+      <div class="choice-grid" data-choice-group="hugStyle">
+        <button class="choice-chip" data-value="Front Hug">Front Hug</button>
+        <button class="choice-chip" data-value="Back Hug">Back Hug</button>
+        <button class="choice-chip" data-value="Tight Hug">Tight Hug</button>
+        <button class="choice-chip" data-value="Gentle Hug">Gentle Hug</button>
+        <button class="choice-chip" data-value="Long Warm Hug">Long Warm Hug</button>
+      </div>
+      <button class="btn btn-primary btn-continue" data-next="hug-3" disabled>Continue</button>
+    </div>
+
+    <div class="glass-card question-card flow-step" data-step="hug-3" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <h2 class="display-heading small">When?</h2>
+      <div class="calendar-mount" data-calendar-for="hug-date"></div>
+      <button class="btn btn-primary btn-continue" data-next="hug-4" disabled>Confirm</button>
+    </div>
+
+    <div class="glass-card success-card flow-step" data-step="hug-4" hidden>
+      <button class="btn-home-corner" data-target="home">← Back to Home</button>
+      <div class="success-icon">🤗</div>
+      <h2 class="display-heading small">Warmth, promised</h2>
+      <div class="success-details">
+        <div class="wc-detail"><span class="wc-detail-label">Hug Style</span><span class="wc-detail-value" id="hugStyleOut">—</span></div>
+        <div class="wc-detail"><span class="wc-detail-label">Hug Date</span><span class="wc-detail-value" id="hugDateOut">—</span></div>
+      </div>
+      <button class="btn btn-ghost" id="redoHugBtn">↻ Do It Again</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Celebration canvas for confetti / heart explosions -->
+<canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+
+<!-- Floating playful message that appears near the dodging No button -->
+<div class="dodge-message" id="dodgeMessage" aria-hidden="true"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
